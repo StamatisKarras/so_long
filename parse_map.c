@@ -17,12 +17,12 @@ void	parse_map(int fd, t_map *map)
 	size_t	i;
 
 	i = 0;
-	map->map = (char **)  ft_calloc(map->height + 1, sizeof(char *));
+	map->map = (char **)  ft_calloc(map->height, sizeof(char *));
 	if (!map->map)
 		free_and_exit_2d(map, "Allocation failure");
 	while(i != map->height)
 	{
-		map->map[i] = (char *) ft_calloc(map->width + 1, sizeof(char));
+		map->map[i] = (char *) ft_calloc(map->width, sizeof(char));
 		if(!map->map[i])
 			free_and_exit_2d(map, "Allocation failure");
 		i++;

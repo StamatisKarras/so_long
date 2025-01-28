@@ -16,5 +16,6 @@ void	free_and_exit(char *to_free, char *error);
 void	parse_map(int fd, t_map *map);
 void	free_and_exit_2d(t_map *map, char * error);
 void	copy_map(int fd, t_map *map);
+void	check_walls(t_map *map);
 
 #endif

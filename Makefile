@@ -8,7 +8,8 @@ HEADER = so_long.h
 
 SRC = main.c \
 	  map_validity.c \
-	  parse_map.c
+	  parse_map.c \
+	  map_structure.c
 
 OBJ = $(SRC:.c=.o)
 
