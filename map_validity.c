@@ -6,7 +6,7 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:32:03 by skarras           #+#    #+#             */
-/*   Updated: 2025/01/23 14:10:31 by skarras          ###   ########.fr       */
+/*   Updated: 2025/01/28 08:43:29 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	map_shape(int fd, t_map *map)
 	if (!line)
 		free_and_exit(line, "Map empty");
 	map->width = ft_strlen(line);
-	map->height += 1;
+	map->height = 1;
 	while(line)
 	{
 		line = get_next_line(fd);

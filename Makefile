@@ -7,7 +7,8 @@ LIB_DIR = ./Custom_Libft
 HEADER = so_long.h
 
 SRC = main.c \
-	  map_validity.c
+	  map_validity.c \
+	  parse_map.c
 
 OBJ = $(SRC:.c=.o)
 
