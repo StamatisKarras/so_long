@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validity.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:32:03 by skarras           #+#    #+#             */
-/*   Updated: 2025/01/28 10:38:14 by skarras          ###   ########.fr       */
+/*   Updated: 2025/02/05 11:56:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,47 @@ void	map_extention(char *mapname)
 void	map_shape(int fd, t_map *map)
 {
 	char	*line;
+	int		flag;
 	size_t	size;
 
-	line = get_next_line(fd);
-	if (!line)
-		free_and_exit(line, "Map empty");
-	map->width = ft_strlen(line);
-	map->height = 1;
-	while(line)
+	flag = 0;
+	while(1)
 	{
 		line = get_next_line(fd);
-		size = ft_strlen(line);
-		if (size == 0)
+		if (flag == 0)
+		{
+			if (!line)
+				free_and_exit(line, "Map empty");
+			map->width = ft_strlen_no_nl_arr(line);
+			map->height = 0;
+			flag = 1;
+		}
+		if (!line)
 			break ;
+		size = ft_strlen_no_nl_arr(line);
 		if (map->width != size || map->width == map->height)
 			free_and_exit(line, "Invalid map shape");
 		map->width = size;
 		map->height += 1;
 		free(line);
 	}
+}
+size_t	ft_strlen_no_nl_arr(char *str)
+{
+	size_t	count;
+	size_t	i;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+		{
+			i++;
+			continue ;
+		}
+		i++;
+		count++;
+	}
+	return (count);
 }
