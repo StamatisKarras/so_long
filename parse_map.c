@@ -1,17 +1,5 @@
 #include "so_long.h"
 
-void	free_and_exit_2d(t_map *map, char *error)
-{
-	size_t	i;
-
-	i = 0;
-	while(i != map->height)
-		free(map->map[i++]);
-	free(map->map);
-	ft_printf("%s\n", error);
-	exit(-1);
-}
-
 void	parse_map(int fd, t_map *map)
 {
 	size_t	i;

@@ -6,6 +6,7 @@
 typedef struct s_map
 {
 	char	**map;
+	char	**map_cp;
 	size_t	width;
 	size_t	height;
 	size_t	c;
@@ -22,5 +23,9 @@ size_t	ft_strlen_no_nl(char *str);
 void	check_characters(t_map *map);
 void	check_char(t_map *map);
 size_t	count_char(t_map *map, char a);
+void	flood_fill(t_map *map);
+void	change_map(t_map *map);
+void	free_2d_copy(t_map *map);
+void	copy_arr(t_map *map);
 
 #endif

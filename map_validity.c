@@ -6,18 +6,11 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:32:03 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/17 11:47:28 by skarras          ###   ########.fr       */
+/*   Updated: 2025/02/17 14:40:42 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	free_and_exit(char *to_free, char *error)
-{
-	free(to_free);
-	ft_printf("%s\n", error);
-	exit(-1);
-}
 
 void	map_extention(char *mapname)
 {

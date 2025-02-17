@@ -9,7 +9,9 @@ HEADER = so_long.h
 SRC = main.c \
 	  map_validity.c \
 	  parse_map.c \
-	  map_structure.c
+	  map_structure.c \
+	  reachable.c \
+	  free.c
 
 OBJ = $(SRC:.c=.o)
 

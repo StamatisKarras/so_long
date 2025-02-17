@@ -13,5 +13,6 @@ int	main(void)
 	close(fd);
 	check_walls(&map);
 	check_characters(&map);
+	flood_fill(&map);
 	return(0);
 }
