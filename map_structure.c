@@ -2,25 +2,22 @@
 
 void	check_walls(t_map *map)
 {
-	size_t	j;
 	size_t	i;
-	size_t	height;
-	size_t	width;
 
-	height = map->height;
-	width = map->width - 1;
-	j = 0;
-	while(j != width)
+	i = 0;
+	while (map->map[0][i])
 	{
-		if (map->map[0][j] != '1' || map->map[height - 1][j] != '1')
-			free_and_exit_2d(map, "Map is not enclosed by walls");
-		j++;
+		if (map->map[0][i] != '1' ||
+			 map->map[map->height - 1][i] != '1')
+			free_and_exit_2d(map, "Map not enclocude by walls");
+		i++;
 	}
 	i = 0;
-	while(i != height)
+	while (map->map[i])
 	{
-		if(map->map[i][0] != '1' || map->map[i][width] != '1')
-			free_and_exit_2d(map, "Map is not enclosed by walls");
+		if (map->map[i][0] != '1' ||
+			 map->map[i][map->width - 1] != '1')
+			free_and_exit_2d(map, "Map not enclocude by walls");
 		i++;
 	}
 }
@@ -60,6 +57,6 @@ void	check_characters(t_map *map)
 	p = 0;
 	while(map->map[i])
 	{
-		
+
 	}
 } */

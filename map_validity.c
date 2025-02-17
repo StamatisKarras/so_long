@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validity.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:32:03 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/05 11:56:37 by codespace        ###   ########.fr       */
+/*   Updated: 2025/02/17 11:47:28 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,35 +42,29 @@ void	map_shape(int fd, t_map *map)
 		{
 			if (!line)
 				free_and_exit(line, "Map empty");
-			map->width = ft_strlen_no_nl_arr(line);
+			map->width = ft_strlen_no_nl(line);
 			map->height = 0;
 			flag = 1;
 		}
 		if (!line)
 			break ;
-		size = ft_strlen_no_nl_arr(line);
-		if (map->width != size || map->width == map->height)
+		size = ft_strlen_no_nl(line);
+		if (map->width != size)
 			free_and_exit(line, "Invalid map shape");
 		map->width = size;
 		map->height += 1;
 		free(line);
 	}
 }
-size_t	ft_strlen_no_nl_arr(char *str)
+size_t	ft_strlen_no_nl(char *str)
 {
 	size_t	count;
-	size_t	i;
 
-	i = 0;
 	count = 0;
-	while (str[i])
+	while (str[count])
 	{
-		if (str[i] == '\n')
-		{
-			i++;
-			continue ;
-		}
-		i++;
+		if (str[count] == '\n')
+			break ;
 		count++;
 	}
 	return (count);

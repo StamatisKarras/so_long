@@ -1,6 +1,6 @@
 NAME = game
 CC = cc
-FLAGS = -Wall -Wextra -Werror -ggdb3 -I.
+FLAGS = -Wall -Wextra -Werror -ggdb3 -I. -g
 
 LIB = ./Custom_Libft/libft.a
 LIB_DIR = ./Custom_Libft
