@@ -12,5 +12,6 @@ int	main(void)
 	parse_map(fd, &map);
 	close(fd);
 	check_walls(&map);
+	check_characters(&map);
 	return(0);
 }

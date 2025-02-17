@@ -42,21 +42,44 @@ void	check_characters(t_map *map)
 		}
 		i++;
 	}
+	check_char(map);
 }
-
-/* void	character_num(t_map *map)
+void	check_char(t_map *map)
 {
-	int	i;
-	int	c;
 	int	e;
 	int	p;
 
-	i = 0;
-	c = 0;
 	e = 0;
 	p = 0;
-	while(map->map[i])
-	{
+	e = count_char(map, 'E');
+	p = count_char(map, 'P');
+	map->c = count_char(map, 'C');
+	if (e != 1)
+		free_and_exit_2d(map, "Invalid EXIT");
+	if (p != 1)
+		free_and_exit_2d(map, "Invalid Player");
+	if (map->c < 1)
+		free_and_exit_2d(map, "Not enough collectibles");
+}
 
+size_t	count_char(t_map *map, char a)
+{
+	int		i;
+	int		j;
+	size_t	count;
+
+	i = 0;
+	count = 0;
+	while (map->map[i])
+	{
+		j = 0;
+		while (map->map[i][j])
+		{
+			if (map->map[i][j] == a)
+				count++;
+			j++;
+		}
+		i++;
 	}
-} */
+	return(count);
+}
