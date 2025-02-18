@@ -14,5 +14,6 @@ int	main(void)
 	check_walls(&map);
 	check_characters(&map);
 	flood_fill(&map);
+	free_all_good(&map);
 	return(0);
 }

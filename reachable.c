@@ -3,7 +3,9 @@
 void	flood_fill(t_map *map)
 {
 	copy_arr(map);
-	change_map(map);
+	dfs(map, 3, 1);
+	if (find_e_c(map))
+		free_2d_copy(map, "Exit or Collectible are not reachable");
 }
 void	copy_arr(t_map *map)
 {
@@ -17,31 +19,35 @@ void	copy_arr(t_map *map)
 	{
 		map->map_cp[i] = ft_strdup(map->map[i]);
 		if (!map->map_cp)
-			free_2d_copy(map);
+			free_2d_copy(map, "Faled to allocate map copy");
 		i++;
 	}
 	map->map_cp[i] = NULL;
 }
 
-void	change_map(t_map *map)
+void	dfs(t_map *map, int y, int x)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (map->map_cp[i])
-	{
-		j = 0;
-		while (map->map_cp[i][j])
-		{
-			if (map->map_cp[i][j] == '0')
-				map->map_cp[i][j] = 'S';
-			else if (map->map_cp[i][j] == '1')
-				map->map_cp[i][j] = 'W';
-			j++;
-		}
-		i++;
-	}
+	if (map->map_cp[y] == NULL || map->map_cp[y][x] == '1' || map->map_cp[y][x] == '3')
+		return ;
+	map->map_cp[y][x] = '3';
+	dfs(map, y + 1, x);
+	dfs(map, y - 1, x);
+	dfs(map, y, x + 1);
+	dfs(map, y, x - 1);
 }
 
-void	find_path()
+int	find_e_c(t_map *map)
+{
+	size_t	i;
+
+	i = 0;
+	while (i != map->height)
+	{
+		if (ft_strchr(map->map_cp[i], 'E'))
+			return (1);
+		if (ft_strchr(map->map_cp[i], 'C'))
+			return (1);
+		i++;
+	}
+	return (0);
+}

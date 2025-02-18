@@ -9,7 +9,7 @@ typedef struct s_map
 	char	**map_cp;
 	size_t	width;
 	size_t	height;
-	size_t	c;
+	int		c;
  } t_map;
 
 void	map_extention(char *map);
@@ -24,8 +24,10 @@ void	check_characters(t_map *map);
 void	check_char(t_map *map);
 size_t	count_char(t_map *map, char a);
 void	flood_fill(t_map *map);
-void	change_map(t_map *map);
-void	free_2d_copy(t_map *map);
+void	free_2d_copy(t_map *map, char *message);
 void	copy_arr(t_map *map);
+void	dfs(t_map *map, int x, int y);
+int	find_e_c(t_map *map);
+void	free_all_good(t_map *map);
 
 #endif
