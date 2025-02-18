@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/18 12:30:16 by skarras           #+#    #+#             */
+/*   Updated: 2025/02/18 12:30:51 by skarras          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	parse_map(int fd, t_map *map)
 {
 	size_t	i;
 
-	map->map = (char **)  ft_calloc(map->height + 1, sizeof(char *));
+	map->map = (char **) ft_calloc(map->height + 1, sizeof(char *));
 	if (!map->map)
 		free_and_exit_2d(map, "Allocation failure");
 	i = 0;
-	while(i != map->height)
+	while (i != map->height)
 	{
 		map->map[i] = (char *) ft_calloc(map->width + 1, sizeof(char));
-		if(!map->map[i])
+		if (!map->map[i])
 			free_and_exit_2d(map, "Allocation failure");
 		i++;
 	}
@@ -25,13 +37,13 @@ void	copy_map(int fd, t_map *map)
 	char	*line;
 
 	i = 0;
-	while(i != map->height)
+	while (i != map->height)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			free_and_exit_2d(map, "NULL read from file");
 		j = 0;
-		while(j != map->width)
+		while (j != map->width)
 		{
 			map->map[i][j] = line[j];
 			j++;
