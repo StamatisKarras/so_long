@@ -1,32 +1,37 @@
 NAME = game
 CC = cc
-FLAGS = -Wall -Wextra -Werror -ggdb3 -I. -g
+FLAGS = -Wall -Wextra -Werror -ggdb3 -I. -g -Ofast
 
-LIB = ./Custom_Libft/libft.a
+LIBS = ./Custom_Libft/libft.a $(LIB_MLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+LIB_MLX = ./MLX42
 LIB_DIR = ./Custom_Libft
-HEADER = so_long.h
+HEADER = -I . -I $(LIB_MLX)/include
 
 SRC = main.c \
 	  map_validity.c \
 	  parse_map.c \
 	  map_structure.c \
 	  reachable.c \
-	  free.c
+	  free.c \
+	  render.c
 
 OBJ = $(SRC:.c=.o)
 
 .SILENT:
 
-all: $(NAME)
+all: libmlx lib $(NAME)
 
-$(NAME): $(OBJ) lib
-	$(CC) $(FLAGS) $(OBJ) -L$(LIB_DIR) -lft -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) $(LIBS) $(HEADER) -o $(NAME)
 
 lib:
-	$(MAKE) -C $(LIB_DIR)
+	$(MAKE) -C $(LIB_DIR) -j4
 
-%.o: %.c $(HEADER)
-	$(CC) $(FLAGS) -c $< -o $@
+libmlx:
+	@cmake $(LIB_MLX) -B $(LIB_MLX)/build && make -C $(LIB_MLX)/build -j4
+
+%.o: %.c
+	$(CC) $(FLAGS) -c $< -o $@ $(HEADER)
 
 re: fclean all
 
@@ -35,6 +40,7 @@ clean:
 	$(MAKE) clean -C $(LIB_DIR)
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf $(LIB_MLX)/build
 	$(MAKE) fclean -C $(LIB_DIR)
 
-.PHONY: all lib clean fclean re
+.PHONY: all lib libmlx clean fclean re
