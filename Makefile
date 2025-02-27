@@ -1,4 +1,4 @@
-NAME = game
+NAME = so_long
 CC = cc
 FLAGS = -Wall -Wextra -Werror -ggdb3 -I. -g -Ofast
 
@@ -7,14 +7,15 @@ LIB_MLX = ./MLX42
 LIB_DIR = ./Custom_Libft
 HEADER = -I . -I $(LIB_MLX)/include
 
-SRC = main.c \
-	  map_validity.c \
-	  parse_map.c \
-	  map_structure.c \
-	  reachable.c \
+SRC = so_long.c \
+	  char_checks.c \
+	  move.c \
+	  free_game.c \
 	  free.c \
-	  render.c \
-	  player.c
+	  helper.c \
+	  map.c \
+	  reachable.c \
+	  render.c
 
 OBJ = $(SRC:.c=.o)
 

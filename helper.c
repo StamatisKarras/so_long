@@ -1,46 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/18 12:27:09 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/27 11:54:10 by skarras          ###   ########.fr       */
+/*   Created: 2025/02/27 11:25:03 by skarras           #+#    #+#             */
+/*   Updated: 2025/02/27 11:25:05 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_2d_copy(t_map *map, char *message)
+size_t	ft_strlen_no_nl(char *str)
 {
-	int	i;
+	size_t	count;
 
-	i = 0;
-	while (map->map_cp[i])
+	count = 0;
+	while (str[count])
 	{
-		free(map->map_cp[i]);
-		i++;
+		if (str[count] == '\n')
+			break ;
+		count++;
 	}
-	free(map->map_cp);
-	free_and_exit_2d(map, message);
+	return (count);
 }
 
-void	free_and_exit(char *to_free, char *error)
-{
-	free(to_free);
-	ft_printf("%s\n", error);
-	exit(-1);
-}
-
-void	free_and_exit_2d(t_map *map, char *error)
+int	find_e_c(t_map *map)
 {
 	size_t	i;
 
 	i = 0;
 	while (i != map->height)
-		free(map->map[i++]);
-	free(map->map);
-	ft_printf("%s\n", error);
-	exit(-1);
+	{
+		if (ft_strchr(map->map_cp[i], 'E'))
+			return (1);
+		if (ft_strchr(map->map_cp[i], 'C'))
+			return (1);
+		i++;
+	}
+	return (0);
 }

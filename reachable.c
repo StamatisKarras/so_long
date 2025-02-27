@@ -6,7 +6,7 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:31:07 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/18 12:32:00 by skarras          ###   ########.fr       */
+/*   Updated: 2025/02/27 12:51:54 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	flood_fill(t_map *map)
 	copy_arr(map);
 	dfs(map, 3, 1);
 	if (find_e_c(map))
-		free_2d_copy(map, "Exit or Collectible are not reachable");
+		free_2d_copy(map, "The exit or a collectible is not reachable");
 }
 
 void	copy_arr(t_map *map)
@@ -48,20 +48,4 @@ void	dfs(t_map *map, int y, int x)
 	dfs(map, y - 1, x);
 	dfs(map, y, x + 1);
 	dfs(map, y, x - 1);
-}
-
-int	find_e_c(t_map *map)
-{
-	size_t	i;
-
-	i = 0;
-	while (i != map->height)
-	{
-		if (ft_strchr(map->map_cp[i], 'E'))
-			return (1);
-		if (ft_strchr(map->map_cp[i], 'C'))
-			return (1);
-		i++;
-	}
-	return (0);
 }

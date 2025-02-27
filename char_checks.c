@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_structure.c                                    :+:      :+:    :+:   */
+/*   char_checks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:28:13 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/18 12:29:21 by skarras          ###   ########.fr       */
+/*   Updated: 2025/02/27 12:50:19 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_walls(t_map *map)
 	{
 		if (map->map[0][i] != '1' ||
 			map->map[map->height - 1][i] != '1')
-			free_and_exit_2d(map, "Map not enclocude by walls");
+			free_and_exit_2d(map, "Map not enclosed by walls");
 		i++;
 	}
 	i = 0;
@@ -29,7 +29,7 @@ void	check_walls(t_map *map)
 	{
 		if (map->map[i][0] != '1' ||
 			map->map[i][map->width - 1] != '1')
-			free_and_exit_2d(map, "Map not enclocude by walls");
+			free_and_exit_2d(map, "Map not enclosed by walls");
 		i++;
 	}
 }
