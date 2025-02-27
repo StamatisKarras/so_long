@@ -6,7 +6,7 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:30:06 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/27 12:30:04 by skarras          ###   ########.fr       */
+/*   Updated: 2025/02/27 14:11:55 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_everything_map(t_game *game)
 
 void	free_everything_graphics(t_game *game)
 {
-	if (game->graph)
+	if (game->graph->collectible)
 	{
 		mlx_delete_image(game->map->game, game->graph->collectible);
 		mlx_delete_image(game->map->game, game->graph->exit);

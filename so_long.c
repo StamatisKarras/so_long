@@ -6,11 +6,12 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:27:20 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/27 12:48:02 by skarras          ###   ########.fr       */
+/*   Updated: 2025/02/27 13:59:51 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
 int	main(int argc, char *argv[])
 {

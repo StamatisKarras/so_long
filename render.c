@@ -6,7 +6,7 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 11:51:15 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/27 13:10:09 by skarras          ###   ########.fr       */
+/*   Updated: 2025/02/27 14:12:21 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ void	map_render(t_map *map)
 	game.graph = &graphics;
 	game.map = map;
 	game.map->moves = 0;
+	if (map->width * TILE_SIZE > SCREEN_WIDTH || map->height * TILE_SIZE > SCREEN_HEIGHT)
+	{
+		free_everything(&game);
+		ft_printf("Game exceeds max screen size\n");
+		exit (-1);
+	}
 	map->game = mlx_init(map->width * TILE_SIZE,
 			map->height * TILE_SIZE, "game", false);
 	if (!map->game)

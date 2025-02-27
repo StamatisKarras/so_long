@@ -6,7 +6,7 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:32:40 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/27 12:59:42 by skarras          ###   ########.fr       */
+/*   Updated: 2025/02/27 14:12:33 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ typedef struct s_game
 	t_graphics	*graph;
 }	t_game;
 
-# define TILE_SIZE 64
+# define TILE_SIZE		64
+# define SCREEN_HEIGHT	2160
+# define SCREEN_WIDTH	3840
 
 void		map_extention(char *map);
 void		map_shape(int fd, t_map *map);
