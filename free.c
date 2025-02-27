@@ -6,7 +6,7 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:27:09 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/18 12:27:41 by skarras          ###   ########.fr       */
+/*   Updated: 2025/02/24 12:54:52 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ void	free_all_good(t_map *map)
 	while (i != map->height)
 		free(map->map[i++]);
 	free(map->map);
+	exit(0);
 }

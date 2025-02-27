@@ -13,7 +13,8 @@ SRC = main.c \
 	  map_structure.c \
 	  reachable.c \
 	  free.c \
-	  render.c
+	  render.c \
+	  player.c
 
 OBJ = $(SRC:.c=.o)
 

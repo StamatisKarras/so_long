@@ -13,8 +13,8 @@ int	main(void)
 	close(fd);
 	check_walls(&map);
 	check_characters(&map);
+	find_player(&map);
 	flood_fill(&map);
 	map_render(&map);
-	free_all_good(&map);
 	return(0);
 }

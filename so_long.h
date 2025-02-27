@@ -6,7 +6,7 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:32:40 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/19 14:15:28 by skarras          ###   ########.fr       */
+/*   Updated: 2025/02/25 18:25:48 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_graphics
 	mlx_image_t *player;
 	mlx_image_t *collectible;
 	mlx_image_t *exit;
+	size_t		x;
+	size_t		y;
 }	t_graphics;
 
 typedef struct s_map
@@ -32,8 +34,18 @@ typedef struct s_map
 	char	**map_cp;
 	size_t	width;
 	size_t	height;
+	size_t	player_x;
+	size_t	player_y;
 	int		c;
+	mlx_t	*game;
 }	t_map;
+
+typedef	struct s_game
+{
+	t_map		*map;
+	t_graphics	*graph;
+}	t_game;
+
 
 # define TILE_SIZE 64
 
@@ -56,5 +68,11 @@ int		find_e_c(t_map *map);
 void	free_all_good(t_map *map);
 void	put_to_window(t_map *map, t_graphics *graphics, mlx_t *game);
 void	map_render(t_map *map);
+void	load_textures(t_graphics *graph, t_map *map);
+void	load_assets(t_graphics *graph, mlx_t *game, char a);
+void	find_player(t_map *map);
+mlx_image_t	*create_texture(char *path, t_map *map);
+void	key_func(mlx_key_data_t data, void *param);
+void	move_player(t_game *game, size_t new_y, size_t new_x);
 
 #endif
