@@ -6,7 +6,7 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:32:03 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/27 11:20:53 by skarras          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:36:25 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ void	parse_map(int fd, t_map *map)
 
 	map->map = (char **) ft_calloc(map->height + 1, sizeof(char *));
 	if (!map->map)
-		free_and_exit_2d(map, "Allocation failure");
+	{
+		ft_printf("Map allocation failure\n");
+		exit(-1);
+	}
 	i = 0;
 	while (i != map->height)
 	{

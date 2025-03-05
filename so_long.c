@@ -6,12 +6,11 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:27:20 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/27 13:59:51 by skarras          ###   ########.fr       */
+/*   Updated: 2025/03/05 12:46:21 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 int	main(int argc, char *argv[])
 {
@@ -26,6 +25,7 @@ int	main(int argc, char *argv[])
 			perror("ERROR");
 			exit(-1);
 		}
+		map_extention(argv[1]);
 		map_shape(fd, &map);
 		close(fd);
 		fd = open(argv[1], O_RDONLY);

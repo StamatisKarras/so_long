@@ -4,7 +4,9 @@ FLAGS = -Wall -Wextra -Werror -ggdb3 -I. -g -Ofast
 
 LIBS = ./Custom_Libft/libft.a $(LIB_MLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIB_MLX = ./MLX42
+LIB_MLX_A = $(LIB_MLX)/build/libmlx42.a
 LIB_DIR = ./Custom_Libft
+LIB_A = $(LIB_DIR)/libft.a
 HEADER = -I . -I $(LIB_MLX)/include
 
 SRC = so_long.c \
@@ -21,15 +23,15 @@ OBJ = $(SRC:.c=.o)
 
 .SILENT:
 
-all: libmlx lib $(NAME)
+all: $(LIB_MLX_A) $(LIB_A) $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) $(LIBS) $(HEADER) -o $(NAME)
 
-lib:
+$(LIB_A):
 	$(MAKE) -C $(LIB_DIR) -j4
 
-libmlx:
+$(LIB_MLX_A):
 	@cmake $(LIB_MLX) -B $(LIB_MLX)/build && make -C $(LIB_MLX)/build -j4
 
 %.o: %.c
@@ -45,4 +47,4 @@ fclean: clean
 	rm -rf $(LIB_MLX)/build
 	$(MAKE) fclean -C $(LIB_DIR)
 
-.PHONY: all lib libmlx clean fclean re
+.PHONY: all clean fclean re

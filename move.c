@@ -6,7 +6,7 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:25:34 by skarras           #+#    #+#             */
-/*   Updated: 2025/02/27 13:09:49 by skarras          ###   ########.fr       */
+/*   Updated: 2025/03/05 12:51:47 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	move_player(t_game *game, size_t new_y, size_t new_x)
 {
 	if (game->map->map[new_y][new_x] == '1')
 		return ;
-	game->map->moves++;
-	ft_printf("Move Count: %d\n", game->map->moves);
 	if (game->map->map[new_y][new_x] == 'E' && game->map->c == 0)
 	{
+		game->map->moves++;
+		ft_printf("Move Count: %d\n", game->map->moves);
 		free_everything(game);
 		exit(0);
 	}
@@ -59,6 +59,8 @@ void	move_player(t_game *game, size_t new_y, size_t new_x)
 			new_x * TILE_SIZE, new_y * TILE_SIZE);
 		game->map->player_y = new_y;
 		game->map->player_x = new_x;
+		game->map->moves++;
+		ft_printf("Move Count: %d\n", game->map->moves);
 	}
 }
 
