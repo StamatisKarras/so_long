@@ -6,7 +6,7 @@
 /*   By: skarras <skarras@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:36:02 by skarras           #+#    #+#             */
-/*   Updated: 2025/01/28 09:47:00 by skarras          ###   ########.fr       */
+/*   Updated: 2025/03/05 11:18:37 by skarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void		read_to_buff(t_buffer *buffer);
 static size_t	next_index(t_buffer *buffer);
-static char		*flush_and_combine(t_buffer *buffer, size_t to_flush, char *line);
+static char		*flush_and_combine(t_buffer *buffer,
+					size_t to_flush, char *line);
 
 char	*get_next_line(int fd)
 {
